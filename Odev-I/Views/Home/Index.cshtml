@@ -1,0 +1,122 @@
+﻿@using Odev_I.CustomHTMLHelper
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-left">
+
+    @{
+        List<SelectListItem> universities = new List<SelectListItem>()
+{
+            new SelectListItem(){ Text="Ege Üniversitesi", Value="35" },
+            new SelectListItem(){ Text="İstanbul Üniversitesi", Value="34" },
+            new SelectListItem(){ Text="Manisa Celal Bayar Üniversitesi", Value="45" },
+            new SelectListItem(){ Text="Pamukkale Üniversitesi", Value="20" },
+            new SelectListItem(){ Text="Uşak Üniversitesi", Value="64" }
+        };
+
+        List<SelectListItem> departments = new List<SelectListItem>()
+{
+            new SelectListItem(){ Text="Finans", Value="finance" },
+            new SelectListItem(){ Text="Hukuk", Value="law" },
+            new SelectListItem(){ Text="İnsan Kaynakları", Value="human resources" },
+            new SelectListItem(){ Text="Operasyon", Value="operation" },
+            new SelectListItem(){ Text="Pazarlama", Value="marketing" },
+            new SelectListItem(){ Text="Satış", Value="sales" },
+            new SelectListItem(){ Text="AR-GE", Value="rd" }
+        };
+
+    }
+
+    Ad:
+    @Html.TextBox("Ad", null, new { id = "name", placeholder = "Adınızı girin" })
+
+    Soyad:
+    @Html.TextBox("Soyad", null, new { id = "surname", placeholder = "Soyadınızı girin" })
+
+    <br>
+    <br>
+
+    Doğum Tarihi:
+    @Html.Date("date", "birthday", "birthday")
+
+    <br>
+    <br>
+
+    Cinsiyet:
+    @Html.RadioButton("gender", "woman") Kadın  @Html.RadioButton("gender", "man") Erkek
+
+    <br>
+    <br>
+
+    Askerlik Durumu:
+    @Html.RadioButton("military status", "done") Yaptı  @Html.RadioButton("military status", "not done") Yapmadı/Tecilli  @Html.RadioButton("military status", "exempt")Muaf
+
+    <br>
+    <br>
+
+    Medeni Hal:
+    @Html.RadioButton("marital status", "single") Bekar  @Html.RadioButton("marital status", "married") Evli
+
+    <br>
+    <br>
+
+    Cadde/Sokak:
+    @Html.TextBox("street address")
+
+    <br>
+    <br>
+
+    İlçe/Semt:
+    @Html.TextBox("district address")
+
+    <br>
+    <br>
+
+    Şehir:
+    @Html.TextBox("city address")
+
+    <br>
+    <br>
+
+
+    @*Html.TextArea("address", "", 1, 60, null)*@
+
+    Mezun Olunan Üniversite:
+    @Html.DropDownList("university", universities, "Bir Üniversite Seçin")
+
+    <!-- 
+        asp-item ile list
+        <select asp-items="universities">
+        </select> 
+    -->
+
+        <br>
+        <br>
+
+        Departman:
+        @Html.DropDownList("department", departments, "Bir Departman Seçin")
+
+        <br>
+        <br>
+        Yan Haklar:
+        @Html.CheckBox("fringe benefits") Yemek &nbsp;
+        @Html.CheckBox("fringe benefits") Yol &nbsp;
+        @Html.CheckBox("fringe benefits") Özel Sağlık Sigortası &nbsp;
+
+        <br>
+
+        @Html.CheckBox("fringe benefits") Araç &nbsp;
+        @Html.CheckBox("fringe benefits") Eğitim Desteği &nbsp;
+        @Html.CheckBox("fringe benefits") Laptop &nbsp;
+        @Html.CheckBox("fringe benefits") Telefon &nbsp;
+
+        <br>
+        <br>
+        @Html.Button("Kaydet Html Button")
+        <br>
+        <br>
+        <a asp-action="Index" asp-controller="Home">Kaydet asp-action</a>
+    </div>
+
